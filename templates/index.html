@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        h1 h2 h3 {
+            font-weight: bold;
+        }
+        
+        figcaption {
+            font-size: medium;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron text-center">
+            <h1>Mission to Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        </div>
+        <h2>Latest Mars News</h2>
+        <h4>{{ vacation.news_title }}</h4>
+        <p>{{ vacation.news_p }}</p>
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="mt-0">Featured Mars Image</h2>
+                <img src="{{vacation.featured_image_url}}" style="max-width: 90%; max-height: 90%" />
+            </div>
+
+            <div class="col-md-4">
+
+                <h2>Current Weather on Mars</h2>
+                <p>{{ vacation.mars_weather }}</p>
+                <h2>Mars Facts</h2>
+                {{ vacation.html_table |safe}}
+
+            </div>
+        </div>
+        <div class="jumbotron text-center ">
+            <h1>Mars Hemispheres</h1>
+        </div>
+        <div class="row">
+            {% for image in vacation.hemisphere_image_urls %}
+            <div class="col-md-2"></div>
+            <figure class="col-md-4">
+                <img src="{{image.img_urls}} " style="max-width: 75%; max-height: 75%">
+                <figcaption class="text-left">{{image.titles}}</figcaption>
+            </figure>
+
+            {% endfor %}
+            <div class="col-md-2"></div>
+        </div>
+
+
+
+
+
+
+    </div>
+    </div>
+</body>
+
+</html>
